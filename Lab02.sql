@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `Materia` (
   `codigo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `cupo` int(11) NOT NULL,
+  `horario` varchar(50),
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
