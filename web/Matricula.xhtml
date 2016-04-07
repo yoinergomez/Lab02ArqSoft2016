@@ -24,10 +24,59 @@
 	        </div>
 	    </div>
         </h:form>
+        <!--
         <h:form>
+            
             <h2>CAPTCHA</h2>
             <div class="g-recaptcha" data-sitekey="6Led6xoTAAAAAAn1_QtmglCWAGChlikyNaEmTtXH"></div>
         </h:form>
+        -->
+        <h:form prependId="false">
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <p:outputLabel value="#{msg.codigo}Codigo materia:"/>
+                        <p:inputText
+                            id="codigoMateria"
+                            value="#{matriculaBean.codigoStr}"
+                            required="true"/>
+                        <p:message for="codigoMateria" styleClass="erromsg" />
+                    </div>
+                    <div class="span3">
+                        <br/>
+                        <p:commandButton 
+                            value="#{msg.agregarMateria}Agregar materia"
+                            actionListener="#{matriculaBean.agregarMateria()}" 
+                            update="@form:prueba"> 
+                        </p:commandButton>
+                    </div>
+                    <div class="span3">
+                        
+                    </div>
+                </div>
+            <h:panelGroup id="prueba">
+                 <p:outputLabel value="#{msg.tablaOfertaMaterias}Oferta de materias:"/>
+                <p:dataTable id="tablaMaterias" var="materia" value="#{matriculaBean.copiaListaMaterias}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+                    <p:column headerText="Codigo" priority="1">
+                        <h:outputText value="#{materia.codigo}" />
+                    </p:column>
+                    <p:column headerText="Nombre" priority="2">
+                        <h:outputText value="#{materia.nombre}" />
+                    </p:column>
+                </p:dataTable>
+                <p:outputLabel value="#{msg.tablaMateriasMatriculadas}Materias  :"/>
+                <p:dataTable id="tablaMateriasMatriculadas" var="materia" value="#{matriculaBean.listaMateriasMatriculadas}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+                    <p:column headerText="Codigo" priority="1">
+                        <h:outputText value="#{materia.codigo}" />
+                    </p:column>
+                    <p:column headerText="Nombre" priority="2">
+                        <h:outputText value="#{materia.nombre}" />
+                    </p:column>
+                </p:dataTable>
+            </h:panelGroup>
+            
+        </h:form>
+        
     </h:body>
 </html>
 
