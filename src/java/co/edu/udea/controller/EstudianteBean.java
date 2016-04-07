@@ -12,20 +12,26 @@ import javax.faces.context.FacesContext;
 
 
 public class EstudianteBean implements Serializable {
-    
+
     @EJB
     private EstudianteFacadeLocal estudianteDAO;
     private List<Estudiante> studentList;
     
+    private String cedula;
+
     @PostConstruct
-    public void init(){
+    public void init() {
         studentList = estudianteDAO.findAll();
     }
-    
+
     public EstudianteBean() {
-       
+
     }
 
+    public void matricularEstudiante() {
+        System.out.println(cedula);
+    }
+    
     public List<Estudiante> getStudentList() {
         return studentList;
     }
@@ -33,9 +39,17 @@ public class EstudianteBean implements Serializable {
     public void setStudentList(List<Estudiante> studentList) {
         this.studentList = studentList;
     }
-    
-    public void mensajes(Event e){
-        FacesMessage msg = new FacesMessage("Swiped Left","nose");
+
+    public void mensajes(Event e) {
+        FacesMessage msg = new FacesMessage("Swiped Left", "nose");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 }

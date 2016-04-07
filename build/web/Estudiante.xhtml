@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
         
@@ -26,6 +27,34 @@
 	        </div>
 	    </div>
         </h:form>
+        
+        <h:form prependId="false">
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <p:outputLabel value="#{msg.cedula}Cedula:"/>
+                        <p:inputText
+                            id="cedula"
+                            label="#{msg.cedulaEstudiante}Cedula estudiante"
+                            value="#{estudianteBean.cedula}"
+                            required="true">
+                            <f:validateLength minimum="6" maximum="10" />
+                        </p:inputText>
+                        <p:message for="cedula" styleClass="erromsg" />
+                    </div>
+                    <div class="span3">
+                        <br/>
+                        <h:commandButton 
+                            value="#{msg.buscarEstudiante}Buscar estudiante"
+                            actionListener="#{estudianteBean.matricularEstudiante()}"> 
+                        </h:commandButton>
+                    </div>
+                    <div class="span3">
+                        
+                    </div>
+                </div>
+            </h:form>
+        
         <h:form>
             <p:dataTable  var="estudiante" value="#{estudianteBean.studentList}" paginator="true" tableStyleClass="ui-table-columntoggle">               
                 <p:column headerText="Documento" priority="1">
