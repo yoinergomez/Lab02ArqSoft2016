@@ -51,11 +51,17 @@
                         </p:commandButton>
                     </div>
                     <div class="span3">
-                        
+                       <p:commandButton 
+                            value="#{msg.terminarMatriula}Terminar matricula"
+                            actionListener="#{matriculaBean.terminarMatricula()}" 
+                            onclick="window.location.href=('faces/result.xhtml')"
+                            update="@form:prueba"> 
+                        </p:commandButton>
                     </div>
                 </div>
             <h:panelGroup id="prueba">
                  <p:outputLabel value="#{msg.tablaOfertaMaterias}Oferta de materias:"/>
+                 <p:outputLabel value="#{matriculaBean.cedula}"/>
                 <p:dataTable id="tablaMaterias" var="materia" value="#{matriculaBean.copiaListaMaterias}" paginator="true" tableStyleClass="ui-table-columntoggle">               
                     <p:column headerText="Codigo" priority="1">
                         <h:outputText value="#{materia.codigo}" />
@@ -74,6 +80,8 @@
                     </p:column>
                 </p:dataTable>
             </h:panelGroup>
+            
+            
             
         </h:form>
         

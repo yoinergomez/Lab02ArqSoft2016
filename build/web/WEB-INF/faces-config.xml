@@ -16,6 +16,10 @@
     <managed-bean>
         <managed-bean-name>matriculaBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.controller.MatriculaBean</managed-bean-class>
+        <managed-property>
+            <property-name>cedula</property-name>
+            <value>#{estudianteBean.cedula}</value>
+        </managed-property>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
 </faces-config>
