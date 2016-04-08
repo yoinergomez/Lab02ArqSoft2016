@@ -10,7 +10,33 @@
         <title>Resultado de la matricula</title>
     </h:head>
     <h:body>
-         <p:barcode value="todo lo que vosotros querais" type="qr" width="500" height="500"/>
+        <h:form>
+            <div class="navbar">
+	        <div class="navbar-inner">
+	            <a href="#" class="brand">Matriculas</a>
+	            <ul class="nav">
+	                <li><a href="#">Inicio</a></li>
+                        <li><a href="faces/Estudiante.xhtml" >Estudiantes</a></li>
+	                <li><a href="faces/Carrera.xhtml">Ingenierias</a></li>
+	                <li><a href="faces/Matricula.xhtml">Materias</a></li>
+	            </ul>
+	        </div>
+	    </div>
+        </h:form>
+        <p:outputLabel value="#{detalleMatricula.estudiante.documento}"/>
+        <p:outputLabel value="#{detalleMatricula.estudiante.nombre}"/>
+        <p:outputLabel value="#{detalleMatricula.estudiante.apellido}"/>
+        <p:outputLabel value="#{detalleMatricula.estudiante.carrera.id}"/>
+        <p:outputLabel value="#{detalleMatricula.estudiante.carrera.nombre}"/>
+        <p:dataTable id="tablaMaterias" var="materia" value="#{detalleMatricula.materiasMatriculadas}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+            <p:column headerText="#{msg.codigoMateria}Codigo" priority="1">
+                <h:outputText value="#{materia.codigo}" />
+            </p:column>
+            <p:column headerText="#{msg.nombreMateria}Nombre de la materia" priority="2">
+                <h:outputText value="#{materia.nombre}" />
+            </p:column>
+        </p:dataTable>
+        <p:barcode value="#{detalleMatricula.qr}" type="qr" width="500" height="500"/>
     </h:body>
 </html>
 

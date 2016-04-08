@@ -22,4 +22,13 @@
         </managed-property>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>detalleMatricula</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.DetalleMatriculaBean</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>cedula</property-name>
+            <value>#{estudianteBean.cedula}</value>
+        </managed-property></managed-bean>
 </faces-config>
