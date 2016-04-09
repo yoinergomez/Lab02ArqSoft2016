@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <managed-bean>
+        <managed-bean-name>estudianteBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.EstudianteBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>carreraBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.CarreraBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>captchaBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.CaptchaBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>matriculaBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.MatriculaBean</managed-bean-class>
+        <managed-property>
+            <property-name>cedula</property-name>
+            <value>#{estudianteBean.cedula}</value>
+        </managed-property>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+</faces-config>

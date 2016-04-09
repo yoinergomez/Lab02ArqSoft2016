@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        
+        <!-- Optional theme -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <title>Carrera</title>
+    </h:head>
+    <h:body>
+        <h:form>
+           <div class="navbar">
+	        <div class="navbar-inner">
+	            <a href="#" class="brand">Matriculas</a>
+	            <ul class="nav">
+	                <li><a href="#">Inicio</a></li>
+                        <li><a href="faces/Estudiante.xhtml" >Estudiantes</a></li>
+	                <li><a href="faces/Carrera.xhtml">Ingenierias</a></li>
+	                <li><a href="faces/Matricula.xhtml">Materias</a></li>
+	            </ul>
+	        </div>
+	    </div>
+        </h:form>
+        <h:form>
+            <p:dataTable var="carrera" value="#{carreraBean.carrerasList}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+                <p:column headerText="Identificación" priority="1">
+                    <h:outputText value="#{carrera.id}" />
+                </p:column>
+                <p:column headerText="Nombre" priority="2">
+                    <h:outputText value="#{carrera.nombre}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

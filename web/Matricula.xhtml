@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>    
+        
+        <script name="jquery/jquery.js" library="primefaces"></script>
+        <title>Materias</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="navbar">
+	        <div class="navbar-inner">
+	            <a href="#" class="brand">Matriculas</a>
+	            <ul class="nav">
+	                <li><a href="#">Inicio</a></li>
+                        <li><a href="faces/Estudiante.xhtml" >Estudiantes</a></li>
+	                <li><a href="faces/Carrera.xhtml">Ingenierias</a></li>
+	                <li><a href="faces/Matricula.xhtml">Materias</a></li>
+	            </ul>
+	        </div>
+	    </div>
+        </h:form>
+
+            
+            
+     
+       
+            <h:form>
+                <h:panelGroup id="panelCaptcha" rendered="#{matriculaBean.mostrarPanelCaptcha}">
+                    <p:outputLabel>Captcha</p:outputLabel>                    
+                    <p:messages id="msg"/>
+                    <p:captcha id="captcha"></p:captcha>    
+                    <br/>  
+                    <p:commandButton value="#{msg.validarCaptcha}Validar" 
+                                     actionListener="#{captchaBean.check()}" ajax="false"/>
+                </h:panelGroup>
+            </h:form>
+   
+             <h:form prependId="false">
+                 <h:panelGroup id="botones">
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <p:outputLabel value="#{msg.codigo}Codigo materia:"/>
+                            <p:inputText
+                                id="codigoMateria"
+                                value="#{matriculaBean.codigoStr}" binding="#{matriculaBean.codigoMateria}"
+                                required="true">
+                                <f:validateLength minimum="1"/>
+                            </p:inputText>
+                            <p:message for="codigoMateria"/>
+                        </div>
+                        <div class="span3">
+                            <br/>
+                            <p:commandButton id="agregarmateria" 
+                                value="#{msg.agregarMateria}Agregar materia" 
+                                disabled="#{matriculaBean.desactivarAgregarMateriaBoton}"
+                                actionListener="#{matriculaBean.agregarMateria()}" ajax="false"
+                                update="@form:botones"/> 
+                            
+                            <p:commandButton id="registrarMateria" 
+                                value="#{msg.registrarMateria}Terminar registro de materias"
+                                disabled="#{matriculaBean.desactivarRegistrarMateriaBoton}"
+                                actionListener="#{matriculaBean.registrarMaterias()}" ajax="false"
+                                update="@form:botones"/> 
+                            
+                        </div>
+                        <div class="span3">
+                           <p:commandButton 
+                                value="#{msg.terminarMatricula}Terminar matricula"
+                                disabled="#{captchaBean.captchaInvalido}"
+                                actionListener="#{matriculaBean.terminarMatricula()}"
+                                update="@form:botones"/> 
+                           
+
+
+                        </div>
+
+                    </div>
+                </h:panelGroup>
+            </h:form> 
+            <h:form>
+                 <p:outputLabel value="#{msg.tablaOfertaMaterias}Oferta de materias:"/>
+                 <p:outputLabel value="#{matriculaBean.cedula}"/>
+                <p:dataTable id="tablaMaterias" var="materia" value="#{matriculaBean.copiaListaMaterias}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+                    <p:column headerText="Codigo" priority="1">
+                        <h:outputText value="#{materia.codigo}" />
+                    </p:column>
+                    <p:column headerText="Nombre" priority="2">
+                        <h:outputText value="#{materia.nombre}" />
+                    </p:column>
+                </p:dataTable>
+                <p:outputLabel value="#{msg.tablaMateriasMatriculadas}Materias registradas :"/>
+                <p:dataTable id="tablaMateriasMatriculadas" var="materia" value="#{matriculaBean.listaMateriasMatriculadas}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+                    <p:column headerText="Codigo" priority="1">
+                        <h:outputText value="#{materia.codigo}" />
+                    </p:column>
+                    <p:column headerText="Nombre" priority="2">
+                        <h:outputText value="#{materia.nombre}" />
+                    </p:column>
+                </p:dataTable>
+        </h:form>
+        
+    </h:body>
+</html>
+
