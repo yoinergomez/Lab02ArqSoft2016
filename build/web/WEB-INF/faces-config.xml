@@ -18,4 +18,9 @@
         <managed-bean-class>co.edu.udea.controller.MatriculaBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>materiaBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.MateriaBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>

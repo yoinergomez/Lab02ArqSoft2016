@@ -1,4 +1,4 @@
-INSERT INTO `Carrera` (`id`, `nombre`) VALUES
+INSERT INTO Carrera ( id , nombre ) VALUES
 (501, 'Ingenieria de materiales'),
 (504, 'Ingenieria de sistemas'),
 (507, 'Ingenieria electrica'),
@@ -14,10 +14,10 @@ INSERT INTO `Carrera` (`id`, `nombre`) VALUES
 (540, 'Ingenieria oceanografica');
 
 --
--- Dumping data for table `Estudiante`
+-- Dumping data for table Estudiante 
 --
 
-INSERT INTO `Estudiante` (`documento`, `nombre`, `apellido`, `carrera`) VALUES
+INSERT INTO Estudiante ( documento , nombre , apellido , carrera ) VALUES
 ('1017233762', 'Frank Alexis ', 'Castrillon Giraldo', 540),
 ('1026154938', 'Santiago', 'Romero Restrepo', 525),
 ('1037562741', 'Pepe', 'Perez', 522),
@@ -26,32 +26,24 @@ INSERT INTO `Estudiante` (`documento`, `nombre`, `apellido`, `carrera`) VALUES
 ('1152454724', 'Maria Camila', 'Gomez Restrepo', 513);
 
 --
--- Dumping data for table `Estudiante_Materia`
+-- Dumping data for table Estudiante_Materia 
 --
 
-INSERT INTO `Estudiante_Materia` (`estudiante`, `materia`) VALUES
-('1037562741', 464),
-('1037562741', 513),
-('1017233762', 553),
-('1152454724', 553),
-('1037975885', 561),
-('1152454724', 561),
-('1040046921', 584),
-('1037562741', 740),
-('1037562741', 750),
-('1040046921', 750),
-('1017233762', 760),
-('1037562741', 760),
-('1026154938', 770),
-('1026154938', 780);
+INSERT INTO Estudiante_Materia ( estudiante , materia ) VALUES
+('1017233762', 464),
+('1026154938', 513),
+('1037562741', 553),
+('1037975885', 553),
+('1040046921', 561),
+('1152454724', 584);
 
 --
--- Dumping data for table `Materia`
+-- Dumping data for table Materia 
 --
 
-INSERT INTO `Materia` (`codigo`, `nombre`, `cupo`, `horario`) VALUES
+INSERT INTO Materia ( codigo , nombre , cupo , horario ) VALUES
 (110, ' SMN DE INGENIERIA SANIT', 19, ' L8-10'),
-(464, ' SISTEMAS DE  ALCANTARIL', 21, ' M10-12'),
+(464, ' SISTEMAS DE ALCANTARIL', 21, ' M10-12'),
 (513, ' CONTAMINACION ATMOSFERI', 19, ' WV8-10'),
 (523, ' ESTRUCTURAS HIDRAULICAS', 19, ' LS8-10'),
 (553, ' DESECHOS SOLIDOS', 19, ' MJ6-8'),
