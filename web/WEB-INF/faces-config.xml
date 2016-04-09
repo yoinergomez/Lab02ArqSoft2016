@@ -6,8 +6,8 @@
     <managed-bean>
         <managed-bean-name>estudianteBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.controller.EstudianteBean</managed-bean-class>
-    
-        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>carreraBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.controller.CarreraBean</managed-bean-class>
@@ -16,6 +16,25 @@
     <managed-bean>
         <managed-bean-name>matriculaBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.controller.MatriculaBean</managed-bean-class>
+        <managed-property>
+            <property-name>cedula</property-name>
+            <value>#{estudianteBean.cedula}</value>
+        </managed-property>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>detalleMatricula</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.DetalleMatriculaBean</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>cedula</property-name>
+            <value>#{estudianteBean.cedula}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>materiaBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.MateriaBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 </faces-config>

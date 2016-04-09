@@ -2,10 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-   <h:head>
-       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-        
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+
         <!-- Optional theme -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
         <!-- Latest compiled and minified JavaScript -->
@@ -14,20 +15,47 @@
     </h:head>
     <h:body>
         <h:form>
-            <div class="navbar">
-	        <div class="navbar-inner">
-	            <a href="#" class="brand">Matriculas</a>
-	            <ul class="nav">
-	                <li><a href="#">Inicio</a></li>
-                        <li><a href="faces/Estudiante.xhtml" >Estudiantes</a></li>
-	                <li><a href="faces/Carrera.xhtml">Ingenierias</a></li>
-	                <li><a href="faces/Matricula.xhtml">Materias</a></li>
-	            </ul>
-	        </div>
-	    </div>
+            <p:tabMenu activeIndex="#{param.i}">
+                <p:menuitem value="Inicio" outcome="faces/index.xhtml" icon="ui-icon-star">
+                    <f:param name="i" value="0" />
+                </p:menuitem>
+                <p:menuitem value="Estudiantes" outcome="faces/Estudiante.xhtml" icon="ui-icon-search">
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+                <p:menuitem value="Ingenierias" outcome="faces/Carrera.xhtml" icon="ui-icon-wrench">
+                    <f:param name="i" value="2" />
+                </p:menuitem>
+                <p:menuitem value="Materias" outcome="faces/Materia.xhtml" icon="ui-icon-document">
+                    <f:param name="i" value="3" />
+                </p:menuitem>
+            </p:tabMenu>
         </h:form>
         <h:form>
-            
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="well well-small">	
+                            <h1>Laboratorio #1</h1>
+                            <p>Arquitectura de Software</p>
+                            <p>Diego Jose Luis Botia</p>
+                            <p>
+Siguiendo el proceso del ejercicio de ejemplo, realiza una aplicación con JSF y primefaces para simular el registro de matrícula de un estudiante. Al final del proceso debe aparecer la confirmación de la matrícula del estudiante con un código QR para validar el registro.  </p>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div class="well well-small">
+                            <h2>Realizado por:</h2>
+                            <p>
+                                Jhonatan Alexander Orozco<br/>
+                                Yoiner Esteban Gomez<br/>
+                                Maria Camila Gómez<br/>
+                                Frank Alexis Castrillo<br/>
+                                Santiago Romero<br/>
+                            </p>
+                        </div> 
+                    </div>
+                </div>
+            </div>
         </h:form>  
     </h:body>
 </html>
