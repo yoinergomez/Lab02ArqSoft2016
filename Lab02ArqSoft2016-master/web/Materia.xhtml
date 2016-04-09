@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <title>Materias</title>
+    </h:head>
+    <h:body>
+        <h:form>
+           <div class="navbar">
+	        <div class="navbar-inner">
+	            <a href="#" class="brand">Matriculas</a>
+	            <ul class="nav">
+	                <li><a href="#">Inicio</a></li>
+                        <li><a href="faces/Estudiante.xhtml" >Estudiantes</a></li>
+	                <li><a href="faces/Carrera.xhtml">Ingenierias</a></li>
+	                <li><a href="faces/Matricula.xhtml">Materias</a></li>
+	            </ul>
+	        </div>
+	    </div>
+        </h:form>
+        <h:form>
+            <p:commandButton value="Agregar materia" onclick="PF('dlg1').show();" type="button" />               
+            <p:dialog header="Nueva materia" widgetVar="dlg1" modal="true">
+                <div>
+                    <h:outputText value="codigo:  "/>
+                    <h:inputText id="codigo" />
+                    <br></br>
+                    <h:outputText value="Nombre: "/>
+                    <h:inputText id="nombre" />
+                    <br></br>
+                    <h:outputText value="Cupo:   "/>
+                    <h:inputText id="cupo" />
+                    <br></br>
+                    <h:outputText value="Horario: "/>
+                    <h:inputText id="horario" />
+                    <br></br>
+                    <p:commandButton value="Guardar"  actionListener="#{materiaBean.guardarMateria()}"></p:commandButton>
+                </div>
+            </p:dialog>
+        </h:form>
+        <h:form>
+            <p:dataTable  var="materia" value="#{materiaBean.materiaList}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+                <p:column headerText="Codigo" priority="1">
+                    <h:outputText value="#{materia.codigo}" />
+                </p:column>
+                <p:column headerText="Nombre" priority="2">
+                    <h:outputText value="#{materia.nombre}" />
+                </p:column>
+                <p:column headerText="Cupo" priority="1">
+                    <h:outputText value="#{materia.cupo}" />
+                </p:column>
+                <p:column headerText="Horario" priority="2">
+                    <h:outputText value="#{materia.horario}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
