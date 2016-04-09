@@ -30,5 +30,11 @@
         <managed-property>
             <property-name>cedula</property-name>
             <value>#{estudianteBean.cedula}</value>
-        </managed-property></managed-bean>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>materiaBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.controller.MateriaBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>

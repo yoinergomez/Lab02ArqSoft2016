@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
@@ -12,17 +13,20 @@
     </h:head>
     <h:body>
         <h:form>
-            <div class="navbar">
-	        <div class="navbar-inner">
-	            <a href="#" class="brand">Matriculas</a>
-	            <ul class="nav">
-	                <li><a href="#">Inicio</a></li>
-                        <li><a href="faces/Estudiante.xhtml" >Estudiantes</a></li>
-	                <li><a href="faces/Carrera.xhtml">Ingenierias</a></li>
-	                <li><a href="faces/Matricula.xhtml">Materias</a></li>
-	            </ul>
-	        </div>
-	    </div>
+            <p:tabMenu activeIndex="1">
+                <p:menuitem value="Inicio" outcome="faces/index.xhtml" icon="ui-icon-star">
+                    <f:param name="i" value="0" />
+                </p:menuitem>
+                <p:menuitem value="Estudiantes" outcome="faces/Estudiante.xhtml" icon="ui-icon-search">
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+                <p:menuitem value="Ingenierias" outcome="faces/Carrera.xhtml" icon="ui-icon-wrench">
+                    <f:param name="i" value="2" />
+                </p:menuitem>
+                <p:menuitem value="Materias" outcome="faces/Matricula.xhtml" icon="ui-icon-document">
+                    <f:param name="i" value="3" />
+                </p:menuitem>
+            </p:tabMenu>
         </h:form>
         <!--
         <h:form>
@@ -32,7 +36,7 @@
         </h:form>
         -->
         <h:form prependId="false">
-
+            <div class="container">
                 <div class="row-fluid">
                     <div class="span3">
                         <p:outputLabel value="#{msg.codigo}Codigo materia:"/>
@@ -51,40 +55,40 @@
                         </p:commandButton>
                     </div>
                     <div class="span3">
-                       <p:commandButton 
+                        <p:commandButton 
                             value="#{msg.terminarMatriula}Terminar matricula"
                             actionListener="#{matriculaBean.terminarMatricula()}" 
-                            onclick="window.location.href=('faces/result.xhtml')"
+                            onclick="window.location.href = ('faces/result.xhtml')"
                             update="@form:prueba"> 
                         </p:commandButton>
                     </div>
                 </div>
-            <h:panelGroup id="prueba">
-                 <p:outputLabel value="#{msg.tablaOfertaMaterias}Oferta de materias:"/>
-                 <p:outputLabel value="#{matriculaBean.cedula}"/>
-                <p:dataTable id="tablaMaterias" var="materia" value="#{matriculaBean.copiaListaMaterias}" paginator="true" tableStyleClass="ui-table-columntoggle">               
-                    <p:column headerText="Codigo" priority="1">
-                        <h:outputText value="#{materia.codigo}" />
-                    </p:column>
-                    <p:column headerText="Nombre" priority="2">
-                        <h:outputText value="#{materia.nombre}" />
-                    </p:column>
-                </p:dataTable>
-                <p:outputLabel value="#{msg.tablaMateriasMatriculadas}Materias  :"/>
-                <p:dataTable id="tablaMateriasMatriculadas" var="materia" value="#{matriculaBean.listaMateriasMatriculadas}" paginator="true" tableStyleClass="ui-table-columntoggle">               
-                    <p:column headerText="Codigo" priority="1">
-                        <h:outputText value="#{materia.codigo}" />
-                    </p:column>
-                    <p:column headerText="Nombre" priority="2">
-                        <h:outputText value="#{materia.nombre}" />
-                    </p:column>
-                </p:dataTable>
-            </h:panelGroup>
-            
-            
-            
+                <h:panelGroup id="prueba">
+                    <p:outputLabel value="#{msg.tablaOfertaMaterias}Oferta de materias:"/>
+                    <p:outputLabel value="#{matriculaBean.cedula}"/>
+                    <p:dataTable id="tablaMaterias" var="materia" value="#{matriculaBean.copiaListaMaterias}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+                        <p:column headerText="Codigo" priority="1">
+                            <h:outputText value="#{materia.codigo}" />
+                        </p:column>
+                        <p:column headerText="Nombre" priority="2">
+                            <h:outputText value="#{materia.nombre}" />
+                        </p:column>
+                    </p:dataTable>
+                    <p:outputLabel value="#{msg.tablaMateriasMatriculadas}Materias  :"/>
+                    <p:dataTable id="tablaMateriasMatriculadas" var="materia" value="#{matriculaBean.listaMateriasMatriculadas}" paginator="true" tableStyleClass="ui-table-columntoggle">               
+                        <p:column headerText="Codigo" priority="1">
+                            <h:outputText value="#{materia.codigo}" />
+                        </p:column>
+                        <p:column headerText="Nombre" priority="2">
+                            <h:outputText value="#{materia.nombre}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGroup>
+            </div>
+
+
         </h:form>
-        
+
     </h:body>
 </html>
 
