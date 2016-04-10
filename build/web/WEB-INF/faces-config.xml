@@ -14,13 +14,13 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-<<<<<<< HEAD
-=======
+
         <managed-bean-name>captchaBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.controller.CaptchaBean</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope></managed-bean>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
     <managed-bean>
->>>>>>> origin/Jhonatan
+
         <managed-bean-name>matriculaBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.controller.MatriculaBean</managed-bean-class>
         <managed-property>
@@ -29,7 +29,7 @@
         </managed-property>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
-<<<<<<< HEAD
+
     <managed-bean>
         <managed-bean-name>detalleMatricula</managed-bean-name>
         <managed-bean-class>co.edu.udea.controller.DetalleMatriculaBean</managed-bean-class>
@@ -45,6 +45,5 @@
         <managed-bean-class>co.edu.udea.controller.MateriaBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
-=======
->>>>>>> origin/Jhonatan
+    
 </faces-config>
