@@ -8,21 +8,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <title>Materias</title>
+        <title><h:outputText value="#{msg.materias}"/></title>
     </h:head>
     <h:body>
         <h:form>
-            <p:tabMenu activeIndex="1">
-                <p:menuitem value="Inicio" outcome="faces/index.xhtml" icon="ui-icon-star">
+            <p:tabMenu activeIndex="3">
+                <p:menuitem value="#{msg.inicio}" outcome="faces/index.xhtml" icon="ui-icon-star">
                     <f:param name="i" value="0" />
                 </p:menuitem>
-                <p:menuitem value="Estudiantes" outcome="faces/Estudiante.xhtml" icon="ui-icon-search">
+                <p:menuitem value="#{msg.estudiantes}" outcome="faces/Estudiante.xhtml" icon="ui-icon-search">
                     <f:param name="i" value="1" />
                 </p:menuitem>
-                <p:menuitem value="Ingenierias" outcome="faces/Carrera.xhtml" icon="ui-icon-wrench">
+                <p:menuitem value="#{msg.ingenierias}" outcome="faces/Carrera.xhtml" icon="ui-icon-wrench">
                     <f:param name="i" value="2" />
                 </p:menuitem>
-                <p:menuitem value="Materias" outcome="faces/Materia.xhtml" icon="ui-icon-document">
+                <p:menuitem value="#{msg.materias}" outcome="faces/Materia.xhtml" icon="ui-icon-document">
                     <f:param name="i" value="3" />
                 </p:menuitem>
             </p:tabMenu>
@@ -31,13 +31,18 @@
         <div class="container">
             <h:form>
                 <p:dataTable id="tablaMaterias" var="materia" value="#{materiaBean.materiaList}" paginator="true" tableStyleClass="ui-table-columntoggle">               
-                    <p:column headerText="Codigo" priority="1">
+                    <p:column headerText="#{msg.codigoMateria}" priority="1">
                         <h:outputText value="#{materia.codigo}" />
                     </p:column>
-                    <p:column headerText="Nombre" priority="2">
+                    <p:column headerText="#{msg.nombreMateria}" priority="2">
                         <h:outputText value="#{materia.nombre}" />
                     </p:column>
                 </p:dataTable>
+            </h:form>
+             <h:form>
+                <br/>
+                <h:commandButton action="#{materiaBean.changeLanguage('')}" value="English" styleClass="btn"/>
+                <h:commandButton action="#{materiaBean.changeLanguage('es')}" value="Español" styleClass="btn"/>
             </h:form>
         </div>
     </h:body>

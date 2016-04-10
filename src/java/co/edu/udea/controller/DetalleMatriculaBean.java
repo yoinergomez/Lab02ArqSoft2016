@@ -9,8 +9,10 @@ import co.edu.udea.logica.EstudianteFacadeLocal;
 import co.edu.udea.modelo.Estudiante;
 import co.edu.udea.modelo.Materia;
 import java.util.List;
+import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -24,6 +26,9 @@ public class DetalleMatriculaBean {
     private List<Materia> materiasMatriculadas; 
     private String qr;
 
+    
+    
+    
     /**
      * Creates a new instance of DetalleMatriculaBean
      */
@@ -82,7 +87,19 @@ public class DetalleMatriculaBean {
     public void setQr(String qr) {
         this.qr = qr;
     }
-    
-    
+
+    //Internacionalización
+    private Locale locale =  FacesContext.getCurrentInstance().getViewRoot().getLocale();
+    public Locale getLocale(){
+        return locale;
+    }
+    public String getLanguage(){
+        return locale.getLanguage();
+    }
+    public void changeLanguage(String language){
+        locale=new Locale(language);
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale(language));
+        
+    }
     
 }

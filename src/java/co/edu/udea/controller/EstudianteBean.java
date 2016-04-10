@@ -8,6 +8,7 @@ import java.awt.Event;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -21,6 +22,8 @@ public class EstudianteBean implements Serializable {
     private String cedula;
     private String desabilitarVerMatricula;
     private String desabilitarMatricula;
+    
+    
 
     @PostConstruct
     public void init() {
@@ -90,4 +93,20 @@ public class EstudianteBean implements Serializable {
     public void setDesabilitarMatricula(String desabilitarMatricula) {
         this.desabilitarMatricula = desabilitarMatricula;
     } 
+    
+    //Internacionalización
+    private Locale locale =  FacesContext.getCurrentInstance().getViewRoot().getLocale();
+    public Locale getLocale(){
+        return locale;
+    }
+    public String getLanguage(){
+        return locale.getLanguage();
+    }
+    public void changeLanguage(String language){
+        locale=new Locale(language);
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale(language));
+        
+    }
+    
+   
 }

@@ -11,22 +11,21 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <title>Estudiantes</title>
+        <title><h:outputText value="#{msg.estudiantes}"/></title>
     </h:head>
     <h:body>
         <h:form>
-
-            <p:tabMenu activeIndex="#{param.i}">
-                <p:menuitem value="Inicio" outcome="faces/index.xhtml" icon="ui-icon-star">
+            <p:tabMenu activeIndex="1">
+                <p:menuitem value="#{msg.inicio}" outcome="faces/index.xhtml" icon="ui-icon-star">
                     <f:param name="i" value="0" />
                 </p:menuitem>
-                <p:menuitem value="Estudiantes" outcome="faces/Estudiante.xhtml" icon="ui-icon-search">
+                <p:menuitem value="#{msg.estudiantes}" outcome="faces/Estudiante.xhtml" icon="ui-icon-search">
                     <f:param name="i" value="1" />
                 </p:menuitem>
-                <p:menuitem value="Ingenierias" outcome="faces/Carrera.xhtml" icon="ui-icon-wrench">
+                <p:menuitem value="#{msg.ingenierias}" outcome="faces/Carrera.xhtml" icon="ui-icon-wrench">
                     <f:param name="i" value="2" />
                 </p:menuitem>
-                <p:menuitem value="Materias" outcome="faces/Matricula.xhtml" icon="ui-icon-document">
+                <p:menuitem value="#{msg.materias}" outcome="faces/Materia.xhtml" icon="ui-icon-document">
                     <f:param name="i" value="3" />
                 </p:menuitem>
             </p:tabMenu>
@@ -36,10 +35,10 @@
 
                 <div class="row-fluid">
                     <div class="span3">
-                        <p:outputLabel value="#{msg.cedula}Cedula:"/>
+                        <p:outputLabel value="#{msg.cedula}"/>
                         <p:inputText
                             id="cedula"
-                            label="#{msg.cedulaEstudiante}Cedula estudiante"
+                            label="#{msg.idEstudiante}"
                             value="#{estudianteBean.cedula}"
                             required="true">
                             <f:validateLength minimum="6" maximum="10" />
@@ -49,23 +48,25 @@
                     <div class="span3">
                         <br/>
                         <h:commandButton 
-                            value="#{msg.buscarEstudiante}Buscar estudiante"
-                            actionListener="#{estudianteBean.matricularEstudiante()}"> 
-                        </h:commandButton>
+                            value="#{msg.buscarEstudiante}"
+                            actionListener="#{estudianteBean.matricularEstudiante()}"
+                            styleClass="btn"/> 
                     </div>
                     <div class="span3">
                         <br/>
-                        <p:commandButton id="matricular" value="#{msg.matricular}Matricular"
+                        <p:commandButton id="matricular" value="#{msg.matricular}"
                                          onclick="window.location.href = ('faces/Matricula.xhtml')"
                                          style="display: #{estudianteBean.desabilitarMatricula}"
                                          action="submit"
-                                         update="@form:matricular">
+                                         update="@form:matricular"
+                                         styleClass="btn">
                         </p:commandButton>
-                        <p:commandButton id="verMatricula" value="#{msg.verMatricular}Ver matricula" 
+                        <p:commandButton id="verMatricula" value="#{msg.verMatricular}" 
                                          onclick="window.location.href = ('faces/result.xhtml')"
                                          style="display: #{estudianteBean.desabilitarVerMatricula}"
                                          action="submit"
-                                         update="@form:verMatricula">
+                                         update="@form:verMatricula"
+                                         styleClass="btn">
                         </p:commandButton>
                     </div>
                 </div>
@@ -73,19 +74,24 @@
 
             <h:form>
                 <p:dataTable  var="estudiante" value="#{estudianteBean.studentList}" paginator="true" tableStyleClass="ui-table-columntoggle">               
-                    <p:column headerText="Documento" priority="1">
+                    <p:column headerText="#{msg.idEstudiante}" priority="1">
                         <h:outputText value="#{estudiante.documento}" />
                     </p:column>
-                    <p:column headerText="Nombre" priority="2">
+                    <p:column headerText="#{msg.nombreEst}" priority="2">
                         <h:outputText value="#{estudiante.nombre}" />
                     </p:column>
-                    <p:column headerText="Apellido" priority="1">
+                    <p:column headerText="#{msg.apellidoEst}" priority="1">
                         <h:outputText value="#{estudiante.apellido}" />
                     </p:column>
-                    <p:column headerText="Carrera" priority="2">
+                    <p:column headerText="#{msg.nombreCarrera}" priority="2">
                         <h:outputText value="#{estudiante.carrera.nombre}"/>
                     </p:column>
                 </p:dataTable>
+            </h:form>
+            <h:form>
+                <br/>
+                <h:commandButton action="#{estudianteBean.changeLanguage('')}" value="English" styleClass="btn"/>
+                <h:commandButton action="#{estudianteBean.changeLanguage('es')}" value="Español" styleClass="btn"/>
             </h:form>
         </div>
     </h:body>

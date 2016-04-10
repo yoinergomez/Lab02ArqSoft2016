@@ -11,51 +11,54 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <title>Super Matricula</title>
+        <title><h:outputText value="#{msg.inicio}"/></title>
     </h:head>
     <h:body>
-        <h:form>
-            <p:tabMenu activeIndex="#{param.i}">
-                <p:menuitem value="Inicio" outcome="faces/index.xhtml" icon="ui-icon-star">
-                    <f:param name="i" value="0" />
-                </p:menuitem>
-                <p:menuitem value="Estudiantes" outcome="faces/Estudiante.xhtml" icon="ui-icon-search">
-                    <f:param name="i" value="1" />
-                </p:menuitem>
-                <p:menuitem value="Ingenierias" outcome="faces/Carrera.xhtml" icon="ui-icon-wrench">
-                    <f:param name="i" value="2" />
-                </p:menuitem>
-                <p:menuitem value="Materias" outcome="faces/Materia.xhtml" icon="ui-icon-document">
-                    <f:param name="i" value="3" />
-                </p:menuitem>
-            </p:tabMenu>
-        </h:form>
-        <h:form>
-            <div class="container">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <div class="well well-small">	
-                            <h1>Laboratorio #1</h1>
-                            <p>Arquitectura de Software</p>
-                            <p>Diego Jose Luis Botia</p>
-                            <p>
-                                Siguiendo el proceso del ejercicio de ejemplo, realiza una aplicación con JSF y primefaces para simular el registro de matrícula de un estudiante. Al final del proceso debe aparecer la confirmación de la matrícula del estudiante con un código QR para validar el registro.  </p>
-                        </div>
-                    </div>
-                    <div class="span6">
-                        <div class="well well-small">
-                            <h2>Realizado por:</h2>
-                            <p>
-                                Jhonatan Alexander Orozco<br/>
-                                Yoiner Esteban Gomez<br/>
-                                Maria Camila Gómez<br/>
-                                Frank Alexis Castrillo<br/>
-                                Santiago Romero<br/>
-                            </p>
-                        </div> 
+        <p:tabMenu activeIndex="0">
+            <p:menuitem value="#{msg.inicio}" outcome="faces/index.xhtml" icon="ui-icon-star">
+                <f:param name="i" value="0" />
+            </p:menuitem>
+            <p:menuitem value="#{msg.estudiantes}" outcome="faces/Estudiante.xhtml" icon="ui-icon-search">
+                <f:param name="i" value="1" />
+            </p:menuitem>
+            <p:menuitem value="#{msg.ingenierias}" outcome="faces/Carrera.xhtml" icon="ui-icon-wrench">
+                <f:param name="i" value="2" />
+            </p:menuitem>
+            <p:menuitem value="#{msg.materias}" outcome="faces/Materia.xhtml" icon="ui-icon-document">
+                <f:param name="i" value="3" />
+            </p:menuitem>
+
+        </p:tabMenu>
+        <br/><br/><br/>
+
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="well well-small">	
+                        <h3><p:outputLabel value="#{msg.lab}"/></h3>
+                        <h4><p:outputLabel value="#{msg.profesor}"/></h4>
+                        <p:outputLabel value="#{msg.materia}"/>
+                        <p:outputLabel value="#{msg.laboratorio}"/>
                     </div>
                 </div>
+                <div class="span6">
+                    <div class="well well-small">
+                        <h3><p:outputLabel value="#{msg.realizado}"/></h3>
+                        <p:outputLabel value="#{msg.jhonatan}"/>
+                        <p:outputLabel value="#{msg.frank}"/>
+                        <p:outputLabel value="#{msg.yoiner}"/>
+                        <p:outputLabel value="#{msg.camila}"/>
+                        <p:outputLabel value="#{msg.santiago}"/>
+                    </div> 
+                </div>
             </div>
-        </h:form>  
+            <h:form>
+                <br/>
+                <h:commandButton action="#{carreraBean.changeLanguage('')}" value="English" styleClass="btn"/>
+                <h:commandButton action="#{carreraBean.changeLanguage('es')}" value="Español" styleClass="btn"/>
+            </h:form>
+        </div>
+
+
     </h:body>
 </html>

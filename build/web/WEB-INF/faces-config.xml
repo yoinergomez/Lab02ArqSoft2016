@@ -46,4 +46,16 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
+    <application>
+        <locale-config>
+            <default-locale>es</default-locale>
+            <supported-locale>en</supported-locale>
+                
+        </locale-config>
+        <resource-bundle>
+            <base-name>com.udea.messages.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+    
 </faces-config>

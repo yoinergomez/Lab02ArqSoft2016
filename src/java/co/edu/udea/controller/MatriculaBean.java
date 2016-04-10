@@ -9,6 +9,7 @@ import co.edu.udea.modelo.Materia;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -35,7 +36,8 @@ public class MatriculaBean implements Serializable{
 
     
     private UIComponent codigoMateria;
-
+    
+    
     
     
     @PostConstruct
@@ -166,5 +168,17 @@ public class MatriculaBean implements Serializable{
           }     
     }
     
-    
+    //Internacionalización
+    private Locale locale =  FacesContext.getCurrentInstance().getViewRoot().getLocale();
+    public Locale getLocale(){
+        return locale;
+    }
+    public String getLanguage(){
+        return locale.getLanguage();
+    }
+    public void changeLanguage(String language){
+        locale=new Locale(language);
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale(language));
+        
+    }
 }
